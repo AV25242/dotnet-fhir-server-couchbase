@@ -5,6 +5,7 @@ Setup the Couchbase FHIR server consists of two parts.
 1. Setup the Couchbase server and Synthea data
 
 a)  Install couchbase : https://www.couchbase.com/downloads?family=couchbase-server
+    Enable Data, Index, Search, and Query Services.
 b)  Create two buckets, synthea, fhir_admin. Allocate 300MB to each bucket.
 c)  Download the synthea data to a local drive: https://storage.googleapis.com/synthea-public/synthea_sample_data_fhir_r4_sep2019.zip
 d)  Load the data into the Couchbase synthea bucket.
