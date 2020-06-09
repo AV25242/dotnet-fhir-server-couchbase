@@ -1,0 +1,141 @@
+Note: Replace <couchbase-server> with your server address
+
+curl -XPUT -H "Content-Type: application/json" \
+-u <username>:<password> http://<couchbase-server>:8094/api/index/ConditionCodeText -d \
+'{
+  "type": "fulltext-index",
+  "name": "ConditionCodeText",
+  "uuid": "139b7a63cfddd860",
+  "sourceType": "couchbase",
+  "sourceName": "fhir_admin",
+  "sourceUUID": "3a446254620c68a9a1ef46bfa4d24ce1",
+  "planParams": {
+    "maxPartitionsPerPIndex": 171,
+    "indexPartitions": 6
+  },
+  "params": {
+    "doc_config": {
+      "docid_prefix_delim": "",
+      "docid_regexp": "",
+      "mode": "type_field",
+      "type_field": "resourceType"
+    },
+    "mapping": {
+      "analysis": {},
+      "default_analyzer": "standard",
+      "default_datetime_parser": "dateTimeOptional",
+      "default_field": "_all",
+      "default_mapping": {
+        "dynamic": true,
+        "enabled": false
+      },
+      "default_type": "_default",
+      "docvalues_dynamic": true,
+      "index_dynamic": true,
+      "store_dynamic": false,
+      "type_field": "_type",
+      "types": {
+        "Condition": {
+          "dynamic": false,
+          "enabled": true,
+          "properties": {
+            "code": {
+              "dynamic": false,
+              "enabled": true,
+              "properties": {
+                "text": {
+                  "dynamic": false,
+                  "enabled": true,
+                  "fields": [
+                    {
+                      "docvalues": true,
+                      "include_in_all": true,
+                      "include_term_vectors": true,
+                      "index": true,
+                      "name": "text",
+                      "type": "text"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "store": {
+      "indexType": "scorch"
+    }
+  },
+  "sourceParams": {}
+}'
+
+curl -XPUT -H "Content-Type: application/json" \
+-u <username>:<password> http://<couchbase-server>:8094/api/index/DiagReportCodeText -d \
+'{
+  "type": "fulltext-index",
+  "name": "DiagReportCodeText",
+  "uuid": "97bb53b5baa4ac72",
+  "sourceType": "couchbase",
+  "sourceName": "fhir_admin",
+  "sourceUUID": "3a446254620c68a9a1ef46bfa4d24ce1",
+  "planParams": {
+    "maxPartitionsPerPIndex": 171,
+    "indexPartitions": 6
+  },
+  "params": {
+    "doc_config": {
+      "docid_prefix_delim": "",
+      "docid_regexp": "",
+      "mode": "type_field",
+      "type_field": "resourceType"
+    },
+    "mapping": {
+      "analysis": {},
+      "default_analyzer": "standard",
+      "default_datetime_parser": "dateTimeOptional",
+      "default_field": "_all",
+      "default_mapping": {
+        "dynamic": true,
+        "enabled": false
+      },
+      "default_type": "_default",
+      "docvalues_dynamic": true,
+      "index_dynamic": true,
+      "store_dynamic": false,
+      "type_field": "_type",
+      "types": {
+        "DiagnosticReport": {
+          "dynamic": true,
+          "enabled": true,
+          "properties": {
+            "code": {
+              "dynamic": false,
+              "enabled": true,
+              "properties": {
+                "text": {
+                  "dynamic": false,
+                  "enabled": true,
+                  "fields": [
+                    {
+                      "docvalues": true,
+                      "include_in_all": true,
+                      "include_term_vectors": true,
+                      "index": true,
+                      "name": "text",
+                      "type": "text"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "store": {
+      "indexType": "scorch"
+    }
+  },
+  "sourceParams": {}
+}'
