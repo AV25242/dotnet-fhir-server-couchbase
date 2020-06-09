@@ -1,0 +1,35 @@
+  
+CREATE INDEX `adv_code_coding_system_code_coding_code_split_subject_reference_2_resourceType` ON `fhir_admin`(((`code`.`coding`).`system`),((`code`.`coding`).`code`),(split((`subject`.`reference`), ":")[2])) WHERE (`resourceType` = "Condition");
+ 
+CREATE INDEX `adv_code_text_split_subject_reference_2_resourceType` ON
+`fhir_admin`((`code`.`text`),(split((`subject`.`reference`), ":")[2])) WHERE (`resourceType` = "Condition");
+ 
+CREATE INDEX `adv_DISTINCT_array_flatten_array_star_name_given_array_count_name_Patient` ON `fhir_admin`((distinct (array `y` for `y` in array_flatten((array_star(`name`).`given`), 1) end)),array_count(`name`)) WHERE (`resourceType` = "Patient");
+ 
+CREATE INDEX `adv_DISTINCT_array_flatten_array_star_name_given_array_count_name_Practitioner` ON `fhir_admin`((distinct (array `y` for `y` in array_flatten((array_star(`name`).`given`), 1) end)),array_count(`name`)) WHERE (`resourceType` = "Practitioner");
+ 
+CREATE INDEX `adv_DISTINCT_array_star_name_family_array_count_name_Patient` ON `fhir_admin`((distinct (array `x` for `x` in (array_star(`name`).`family`) end)),array_count(`name`)) WHERE (`resourceType` = "Patient");
+ 
+ CREATE INDEX `adv_DISTINCT_array_star_name_family_array_count_name_Practitioner` ON `fhir_admin`((distinct (array `x` for `x` in (array_star(`name`).`family`) end)),array_count(`name`)) WHERE (`resourceType` = "Practitioner");
+ 
+ CREATE INDEX `adv_DISTINCT_array_star_name_family_array_count_name_resourceType` ON `fhir_admin`((distinct (array `x` for `x` in (array_star(`name`).`family`) end)),array_count(`name`)) WHERE (`resourceType` = "Patient");
+ 
+CREATE INDEX `adv_DISTINCT_telecom_system_Organization` ON `fhir_admin`((distinct (array (`v`.`system`) for `v` in `telecom` end))) WHERE (`resourceType` = "Organization");
+ 
+ CREATE INDEX `adv_DISTINCT_telecom_system_Patient` ON `fhir_admin`((distinct (array (`v`.`system`) for `v` in `telecom` end))) WHERE (`resourceType` = "Patient");
+ 
+ CREATE INDEX `adv_DISTINCT_telecom_system_Practitioner` ON `fhir_admin`((distinct (array (`v`.`system`) for `v` in `telecom` end))) WHERE (`resourceType` = "Practitioner");
+ 
+CREATE INDEX `adv_en_resourceType_id` ON `fhir_admin`(`id`,`resourceType`);
+ 
+CREATE INDEX `adv_id_resourceType` ON `fhir_admin`(`id`) WHERE (`resourceType` = "Patient");
+ 
+CREATE INDEX `adv_performedPeriod_start_performedPeriod_end_split_subject_reference_2_resourceType` ON `fhir_admin`((`performedPeriod`.`start`),(`performedPeriod`.`end`),(split((`subject`.`reference`), ":")[2])) WHERE (`resourceType` = "Procedure");
+ 
+ CREATE INDEX `adv_proc_code_text_split_subject_reference_2_resourceType` ON `fhir_admin`((`code`.`text`),(split((`subject`.`reference`), ":")[2])) WHERE (`resourceType` = "Procedure");
+ 
+CREATE INDEX `adv_split_subject_reference_2` ON `fhir_admin`((split((`subject`.`reference`), ":")[2]));
+ 
+CREATE INDEX `adv_split_subject_reference_2_resourceType_split_participant_0_individual_reference_2` ON `fhir_admin`((split((`subject`.`reference`), ":")[2]),(split((((`participant`[0]).`individual`).`reference`), ":")[2])) WHERE (`resourceType` = "Encounter");
+ 
+CREATE INDEX `fa_restype` ON `fhir_admin`(`resourceType`);
