@@ -5,10 +5,10 @@ curl -XPUT -H "Content-Type: application/json" \
 '{
   "type": "fulltext-index",
   "name": "ConditionCodeText",
-  "uuid": "139b7a63cfddd860",
+  "uuid": "",
   "sourceType": "couchbase",
   "sourceName": "fhir_admin",
-  "sourceUUID": "3a446254620c68a9a1ef46bfa4d24ce1",
+  "sourceUUID": "",
   "planParams": {
     "maxPartitionsPerPIndex": 171,
     "indexPartitions": 6
@@ -75,10 +75,10 @@ curl -XPUT -H "Content-Type: application/json" \
 '{
   "type": "fulltext-index",
   "name": "DiagReportCodeText",
-  "uuid": "97bb53b5baa4ac72",
+  "uuid": "",
   "sourceType": "couchbase",
   "sourceName": "fhir_admin",
-  "sourceUUID": "3a446254620c68a9a1ef46bfa4d24ce1",
+  "sourceUUID": "",
   "planParams": {
     "maxPartitionsPerPIndex": 171,
     "indexPartitions": 6
